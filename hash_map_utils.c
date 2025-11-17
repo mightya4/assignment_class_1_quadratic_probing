@@ -126,6 +126,13 @@ void insert(hash_map_t *map, hash_element_t *elem) {
         printf("Collision detected!\n");
 
         // TODO: Implement quadratic probing here
+        int i = 1;
+        while(map->primary[index]) {
+            while (map->primary[index] != NULL) {
+                    index = (index + i^2) % map->map_size;
+                }
+                i++;
+        }
     }
 
     printf("Inserting %s at %d\n", elem->key, index);
